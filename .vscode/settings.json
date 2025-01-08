@@ -1,0 +1,14 @@
+{
+    "zig.path": "/opt/homebrew/bin/zig",
+    "zig.buildOnSave": true,
+    "editor.formatOnSave": true,
+    "[zig]": {
+        "editor.defaultFormatter": "ziglang.vscode-zig",
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "files.exclude": {
+        "zig-cache/": true,
+        "zig-out/": true
+    }
+}

@@ -1,11 +1,25 @@
 {
     "zig.path": "/opt/homebrew/bin/zig",
+    "zig.zls.path": "/opt/homebrew/bin/zls",
     "zig.buildOnSave": true,
     "editor.formatOnSave": true,
     "[zig]": {
         "editor.defaultFormatter": "ziglang.vscode-zig",
         "editor.insertSpaces": true,
-        "editor.tabSize": 4
+        "editor.tabSize": 4,
+        "editor.suggest.insertMode": "replace",
+        "editor.stickyScroll.defaultModel": "foldingProviderModel",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit",
+            "source.fixAll": "explicit",
+        }
+    },
+    "editor.semanticTokenColorCustomizations": {
+        "rules": {
+            "*.deprecated": {
+                "strikethrough": true
+            }
+        }
     },
     "files.exclude": {
         "zig-cache/": true,

@@ -1,24 +1,27 @@
 const std = @import("std");
+const year2015 = @import("year2015/main.zig");
 
 pub fn main() !void {
-    // Prints to stderr (it's a shortcut based on `std.io.getStdErr()`)
-    std.debug.print("All your {s} are belong to us.\n", .{"codebase"});
+    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+    defer _ = gpa.deinit();
+    const allocator = gpa.allocator();
 
-    // stdout is for the actual output of your application, for example if you
-    // are implementing gzip, then only the compressed bytes should be sent to
-    // stdout, not any debugging messages.
-    const stdout_file = std.io.getStdOut().writer();
-    var bw = std.io.bufferedWriter(stdout_file);
-    const stdout = bw.writer();
+    const args = try std.process.argsAlloc(allocator);
+    defer std.process.argsFree(allocator, args);
 
-    try stdout.print("Run `zig build test` to run the tests.\n", .{});
+    if (args.len < 3) {
+        std.debug.print("Usage: zig build run -- <year> <day>\n", .{});
+        return;
+    }
 
-    try bw.flush(); // don't forget to flush!
-}
+    const year = try std.fmt.parseInt(u16, args[1], 10);
+    const day = try std.fmt.parseInt(u8, args[2], 10);
 
-test "simple test" {
-    var list = std.ArrayList(i32).init(std.testing.allocator);
-    defer list.deinit(); // try commenting this out and see if zig detects the memory leak!
-    try list.append(42);
-    try std.testing.expectEqual(@as(i32, 42), list.pop());
+    switch (year) {
+        2015 => try year2015.run(allocator, day),
+        else => {
+            std.debug.print("Year {d} not implemented\n", .{year});
+            return error.YearNotImplemented;
+        },
+    }
 }

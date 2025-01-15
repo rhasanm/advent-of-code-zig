@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/zigtools/zls/refs/heads/master/schema.json",
-    "zig_exe_path": "/opt/homebrew/bin/zig",
+    "zig_exe_path": "/Users/r_hasan/tools/zig-macos-aarch64-0.14.0-dev.2645+affe45b31/zig",
     "semantic_tokens": "partial",
     "enable_build_on_save": true
 }

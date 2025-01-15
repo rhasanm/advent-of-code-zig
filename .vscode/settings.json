@@ -1,6 +1,6 @@
 {
-    "zig.path": "/opt/homebrew/bin/zig",
-    "zig.zls.path": "/opt/homebrew/bin/zls",
+    "zig.path": "/Users/r_hasan/tools/zig-macos-aarch64-0.14.0-dev.2645+affe45b31/zig",
+    "zig.zls.path": "/Users/r_hasan/tools/zig-macos-aarch64-0.14.0-dev.2645+affe45b31/zls",
     "zig.buildOnSave": true,
     "editor.formatOnSave": true,
     "[zig]": {
